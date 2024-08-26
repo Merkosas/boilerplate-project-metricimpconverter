@@ -38,6 +38,12 @@ app.use(function(req, res, next) {
     .send('Not Found');
 });
 
+//Error Handling Middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
 const port = process.env.PORT || 3000;
 
 //Start our server and tests!
